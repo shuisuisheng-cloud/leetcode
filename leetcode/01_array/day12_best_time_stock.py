@@ -58,16 +58,13 @@ import sys
 def main():
     n=int(sys.stdin.readline())
     nums=list(map(int,sys.stdin.readline().split()))
-    max_profit=float('-inf')
-    for index,num in enumerate(nums):
-        index_num=index+1
-        while index_num <= n-1:
-            value=nums[index_num]-num
-            if value>max_profit:
-                max_profit=value
-            index_num+=1
-    if max_profit<=0:
-        max_profit=0
+    min_price=float('inf')
+    max_profit=0
+    for num in nums:
+        if num<min_price:
+            min_price=num
+        if num-min_price>max_profit:
+            max_profit=num-min_price
     print(max_profit)
 
 
